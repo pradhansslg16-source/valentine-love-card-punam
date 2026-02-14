@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Punam 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: 'Playfair Display', serif;
+    background: linear-gradient(135deg, #ffd1dc, #ffe6f0);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Sparkle Particles */
+.sparkle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: twinkle 3s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+    0%,100% { opacity:0.2; }
+    50% { opacity:1; }
+}
+
+/* Floating Hearts */
+.heart {
+    position: absolute;
+    font-size: 20px;
+    animation: floatUp 8s linear infinite;
+    opacity: 0.7;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(100vh); opacity:0; }
+    50% { opacity:1; }
+    100% { transform: translateY(-10vh); opacity:0; }
+}
+
+/* Rose Petals */
+.petal {
+    position: absolute;
+    font-size: 18px;
+    animation: fall 10s linear infinite;
+}
+
+@keyframes fall {
+    0% { transform: translateY(-10vh) rotate(0deg); }
+    100% { transform: translateY(110vh) rotate(360deg); }
+}
+
+/* Envelope */
+.envelope {
+    width: 340px;
+    height: 220px;
+    background: white;
+    border-radius: 12px;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    transition: 1s;
+}
+
+.flap {
+    width: 100%;
+    height: 110px;
+    background: #ff69b4;
+    position: absolute;
+    top: 0;
+    clip-path: polygon(0 0, 50% 100%, 100% 0);
+    transform-origin: top;
+    transition: 1s;
+}
+
+.letter {
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    background: white;
+    top: 5%;
+    left: 5%;
+    border-radius: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+    transform: translateY(100%);
+    transition: 1s;
+    overflow-y: auto;
+}
+
+.envelope.open .flap {
+    transform: rotateX(180deg);
+}
+
+.envelope.open .letter {
+    transform: translateY(0);
+}
+
+/* Text Styles */
+.name {
+    font-family: 'Great Vibes', cursive;
+    font-size: 36px;
+    color: #e91e63;
+    text-align: center;
+}
+
+.message {
+    margin-top: 15px;
+    font-size: 16px;
+    color: #444;
+    line-height: 1.8;
+    opacity: 0;
+    transition: 2s;
+}
+
+.show {
+    opacity: 1;
+}
+
+.promise {
+    margin-top: 20px;
+    font-weight: bold;
+    color: #c2185b;
+    display: none;
+    text-align: center;
+}
+</style>
+</head>
+
+<body>
+
+<div class="envelope" onclick="openLetter()">
+    <div class="flap"></div>
+    <div class="letter">
+        <div class="name">Punam 💖</div>
+
+        <div id="msg1" class="message">
+            पत्थर ढूंढने चला था,<br>
+            भगवान मिल गए।
+        </div>
+
+        <div id="msg2" class="message">
+            जीवन साथी ढूंढने चला था,<br>
+            पत्नी के रूप में भगवान लक्ष्मी मिल गई।
+        </div>
+
+        <div id="msg3" class="message">
+            सोचता था कैसे बिताऊँगा इतना लंबा सफर,<br>
+            तुम मिली तो अब ऐसा लगता है,
+        </div>
+
+        <div id="msg4" class="message">
+            चलता रहे हमेशा,<br>
+            कभी खत्म न हो अब ये सफर।
+        </div>
+
+        <div id="promise" class="promise">
+            💍 मैं वादा करता हूँ,<br>
+            हर जन्म में तुम्हें ही चुनूँगा।<br>
+            तुम मेरी आज भी हो,<br>
+            और हमेशा रहोगी। ❤️
+        </div>
+    </div>
+</div>
+
+<audio id="music" loop>
+    <source src="love.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function openLetter() {
+    document.querySelector(".envelope").classList.add("open");
+
+    const music = document.getElementById("music");
+    music.volume = 0.3;
+    music.play();
+
+    setTimeout(() => document.getElementById("msg1").classList.add("show"), 2000);
+    setTimeout(() => document.getElementById("msg2").classList.add("show"), 8000);
+    setTimeout(() => document.getElementById("msg3").classList.add("show"), 15000);
+    setTimeout(() => document.getElementById("msg4").classList.add("show"), 22000);
+    setTimeout(() => document.getElementById("promise").style.display="block", 30000);
+}
+
+/* Sparkles */
+for (let i = 0; i < 40; i++) {
+    let s = document.createElement("div");
+    s.className = "sparkle";
+    s.style.left = Math.random()*100+"vw";
+    s.style.top = Math.random()*100+"vh";
+    document.body.appendChild(s);
+}
+
+/* Hearts */
+for (let i = 0; i < 25; i++) {
+    let h = document.createElement("div");
+    h.className = "heart";
+    h.innerHTML = "💖";
+    h.style.left = Math.random()*100+"vw";
+    h.style.animationDuration = (6 + Math.random()*6)+"s";
+    document.body.appendChild(h);
+}
+
+/* Petals */
+for (let i = 0; i < 20; i++) {
+    let p = document.createElement("div");
+    p.className = "petal";
+    p.innerHTML = "🌹";
+    p.style.left = Math.random()*100+"vw";
+    p.style.animationDuration = (8 + Math.random()*6)+"s";
+    document.body.appendChild(p);
+}
+</script>
+
+</body>
+</html>
